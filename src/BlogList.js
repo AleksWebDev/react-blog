@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-function Bloglist({posts: posts}) {
+import deletePost from "./deletePost";
+
+function Bloglist({posts: posts, updateFlag, setUpdateFlag}) {
     return (
         <div className="blog">
             {
@@ -8,7 +10,7 @@ function Bloglist({posts: posts}) {
                         <h2>{post.title}</h2>
                         <p>{post.author}</p>
                     </Link>
-                    <button className="btn-delete">Delete</button>
+                    <button onClick={() => {deletePost(post.id, setUpdateFlag(!updateFlag))}} className="btn-delete">Delete</button>
                 </div>)
             )}
         </div>

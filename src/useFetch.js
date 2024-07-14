@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 
-function useFetch(url) {
+function useFetch(url, updateFlag) {
 
     const [data, setData] = useState(null)
     const [isLoaded, setLoaded] = useState(true)
     const [error, setError] = useState(null)
 
     useEffect(()=>{
-        console.log('mounting');
 
             const abortCont = new AbortController();
 
@@ -37,7 +36,7 @@ function useFetch(url) {
             abortCont.abort();
         }
 
-    }, [])
+    }, [updateFlag])
 
     return {data, isLoaded, error}
 }
